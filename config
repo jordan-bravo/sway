@@ -224,6 +224,12 @@ bar {
 include /etc/sway/config.d/*
 
 #
+# Autostart
+#
+#
+exec udiskie
+
+#
 # Misc:
 #
 # remove title bar on windows
