@@ -17,7 +17,7 @@ set $term foot
 # on the original workspace that the command was run on.
 # fuzzel
 # set $menu fuzzel | xargs swaymsg exec --
-set $menu fuzzel
+set $menu /home/jordan/.nix-profile/bin/fuzzel
 # wofi
 # set $menu wofi --show drun
 
@@ -80,7 +80,6 @@ input "type:pointer" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+t exec fuzzel
     bindsym $mod+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
