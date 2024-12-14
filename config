@@ -220,7 +220,8 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %R'; do sleep 1; done
+    # status_command while date +'%Y-%m-%d %R'; do sleep 1; done
+    status_command /home/jordan/.nix-profile/bin/i3status-rs /home/jordan/.config/i3status-rust/config-default.toml
 
     colors {
         statusline #ffffff
