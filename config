@@ -26,7 +26,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/jordan/Pictures/nixos-wallpaper-01.png fill
+output * bg /home/jordan/Pictures/nix-bitcoin-logo-01-wide.png fill
 output HDMI-A-1 resolution 2560x1080
 #
 # Example configuration:
@@ -94,6 +94,11 @@ input "type:pointer" {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Screenshot a region
+    bindsym Print exec grim -g "$(slurp)"
+    # Screenshot the whole screen
+    bindsym Shift+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 #
 # Moving around:
 #
