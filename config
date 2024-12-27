@@ -10,6 +10,8 @@ set $left h
 set $down j
 set $up k
 set $right l
+
+set $nixpath /home/jordan/.nix-profile/bin
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
@@ -17,7 +19,7 @@ set $term foot
 # on the original workspace that the command was run on.
 # fuzzel
 # set $menu fuzzel | xargs swaymsg exec --
-set $menu /home/jordan/.nix-profile/bin/fuzzel
+set $menu $nixpath/fuzzel
 # wofi
 # set $menu wofi --show drun
 
@@ -221,6 +223,10 @@ bindsym XF86AudioMute exec /usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec /usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec /usr/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
+# Brightness control
+bindsym XF86MonBrightnessUp exec $nixpath/brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec $nixpath/brightnessctl set 10%-
+
 #
 # Status Bar:
 #
@@ -231,7 +237,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %R'; do sleep 1; done
-    status_command /home/jordan/.nix-profile/bin/i3status-rs /home/jordan/.config/i3status-rust/config-default.toml
+    status_command $nixpath/i3status-rs /home/jordan/.config/i3status-rust/config-default.toml
 
     colors {
         statusline #ffffff
@@ -247,7 +253,7 @@ include /etc/sway/config.d/*
 #
 #
 # udiskie daemon auto-mounts usb devices
-exec udiskie
+exec $nixpath/udiskie
 
 #
 # Misc:
