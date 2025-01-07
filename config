@@ -254,6 +254,11 @@ include /etc/sway/config.d/*
 # udiskie daemon auto-mounts usb devices
 exec udiskie
 
+# The following helps gnome-keyring start up with Sway
+# See section 6.8.1 of Arch Wiki
+# https://wiki.archlinux.org/title/GNOME/Keyring#Tips_and_tricks
+exec dbus-update-activation-environment --all
+
 #
 # Misc:
 #
