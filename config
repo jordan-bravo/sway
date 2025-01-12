@@ -18,7 +18,7 @@ set $term foot
 # on the original workspace that the command was run on.
 # fuzzel
 # set $menu fuzzel | xargs swaymsg exec --
-set $menu fuzzel
+set $menu fuzzel --background-color=353535ff --text-color=999999ff --selection-color=636363ff --selection-text-color=2b2b2bff --match-color=5666ffff
 # wofi
 # set $menu wofi --show drun
 
@@ -247,15 +247,8 @@ bar {
 
 include /etc/sway/config.d/*
 
-#
-# Autostart
-#
-#
-# udiskie daemon auto-mounts usb devices
-exec udiskie
-
 # The following supposedly helps gnome-keyring start up with Sway
-# See section 6.8.1 of Arch Wiki
+# See section 6.8.1 of Arch Wiki on GNOME Keyring
 # https://wiki.archlinux.org/title/GNOME/Keyring#Tips_and_tricks
 exec dbus-update-activation-environment --all
 
@@ -270,10 +263,20 @@ gaps inner 10
 gaps outer 10
 
 #
+# Autostart:
+#
+# kanshi manages monitor profiles
+exec systemctl --user start kanshi
+# udiskie automounts usb devices
+exec systemctl --user start udiskie
+
+#
 # Systemd integration
 #
+# currently commented out because it breaks gnome-keyring.
+
 # exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl --user start sway-session.target"
 #
 # exec swaymsg -t subscribe '["shutdown"]' && systemctl --user stop sway-session.target
-#
-# exec systemd-cat --identifier=sway sway
+
+# for sway logging: journalctl --user --identifier sway
