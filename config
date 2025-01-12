@@ -269,6 +269,10 @@ gaps outer 10
 exec systemctl --user start kanshi
 # udiskie automounts usb devices
 exec systemctl --user start udiskie
+# trayscale is a gui for tailscale
+exec flatpak run dev.deedles.Trayscale --hide-window
+# nextcloud desktop client for file syncing
+exec flatpak run com.nextcloud.desktopclient.nextcloud
 
 #
 # Systemd integration
