@@ -28,6 +28,7 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/jordan/Pictures/nix-bitcoin-logo-01-wide.png fill
+output eDP-1 scale 1.5
 output HDMI-A-1 resolution 2560x1080
 #
 # Example configuration:
