@@ -2,7 +2,7 @@
 
 ### Variables
 
-# Logo key. Use Mod1 for Alt.
+# Logo key is Mod4. Alt is Mod1
 set $mod Mod1
 # set $mod Mod4
 # Home row direction keys, like vim
@@ -101,6 +101,9 @@ input "type:pointer" {
     bindsym Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d_%H.%M.%S.png')
     # Screenshot the whole screen
     bindsym Shift+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+
+    # Lock screen
+    bindsym Mod4+l exec swaylock -f -c 000000
 #
 # Moving around:
 #
@@ -110,10 +113,11 @@ input "type:pointer" {
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    # Commenting out use of arrow keys because it overlaps with slack navigation
+    # bindsym $mod+Left focus left
+    # bindsym $mod+Down focus down
+    # bindsym $mod+Up focus up
+    # bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
