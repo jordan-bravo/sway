@@ -31,8 +31,6 @@ include /etc/sway/config-vars.d/*
 output * bg /home/jordan/Pictures/nix-bitcoin-logo-01-wide.png fill
 output eDP-1 resolution 2880x1800@90Hz scale 1.5
 output DP-1 resolution 3440x1440@144Hz scale 1.0
-# output eDP-1 scale 1.0 resolution 1920x1200
-# output eDP-1 scale 1.0 resolution 2560x1600
 output HDMI-A-1 resolution 2560x1080 scale 1.0
 #
 # Example configuration:
