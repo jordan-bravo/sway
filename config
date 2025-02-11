@@ -2,7 +2,7 @@
 
 ### Variables
 
-# Logo key. Use Mod1 for Alt.
+# Logo key is Mod4. Alt is Mod1
 set $mod Mod1
 # set $mod Mod4
 # Home row direction keys, like vim
@@ -105,6 +105,9 @@ input "type:pointer" {
     bindsym Print exec grim -g "$(slurp)" $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H.%M.%S.png')
     # Screenshot the whole screen
     bindsym Shift+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
+
+    # Lock screen
+    bindsym Mod4+l exec swaylock -f -c 000000
 #
 # Moving around:
 #
