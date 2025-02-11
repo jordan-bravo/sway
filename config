@@ -12,7 +12,8 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term nixGLIntel ghostty
+# set $term nixGLIntel ghostty
+set $term nixGLIntel kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -28,8 +29,11 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/jordan/Pictures/nix-bitcoin-logo-01-wide.png fill
-output eDP-1 scale 1.0
-output HDMI-A-1 resolution 2560x1080
+output eDP-1 resolution 2880x1800@90Hz scale 1.5
+output DP-1 resolution 3440x1440@144Hz scale 1.0
+# output eDP-1 scale 1.0 resolution 1920x1200
+# output eDP-1 scale 1.0 resolution 2560x1600
+output HDMI-A-1 resolution 2560x1080 scale 1.0
 #
 # Example configuration:
 #
@@ -98,7 +102,7 @@ input "type:pointer" {
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # Screenshot a region
-    bindsym Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/Screenshots/$(date +'%Y-%m-%d_%H.%M.%S.png')
+    bindsym Print exec grim -g "$(slurp)" $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H.%M.%S.png')
     # Screenshot the whole screen
     bindsym Shift+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 #
