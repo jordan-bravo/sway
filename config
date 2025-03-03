@@ -30,7 +30,7 @@ include /etc/sway/config-vars.d/*
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /home/jordan/Pictures/nix-bitcoin-logo-01-wide.png fill
 # thinky screen
-output eDP-1 resolution 2880x1800@90Hz scale 1.5
+output eDP-1 resolution 2880x1800@90Hz scale 1.0
 # tux screen
 # output eDP-1 resolution 2560x1600@90Hz scale 1.25
 output DP-1 resolution 3440x1440@144Hz scale 1.0
@@ -242,7 +242,7 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-    font pango:monospace 14
+    font pango:monospace 20
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
