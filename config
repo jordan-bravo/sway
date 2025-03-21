@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/jordan/Pictures/nix-bitcoin-logo-01-wide.png fill
+output * bg ~/Pictures/nix-bitcoin-logo-01-wide.png fill
 # thinky screen
 output eDP-1 resolution 2880x1800@90Hz scale 1.0
 # tux screen
@@ -258,7 +258,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %R'; do sleep 1; done
-    status_command i3status-rs /home/jordan/.config/i3status-rust/config-default.toml
+    status_command i3status-rs ~/.config/i3status-rust/config-default.toml
 
     colors {
         statusline #ffffff
