@@ -228,17 +228,24 @@ mode "resize" {
 bindsym $mod+n mode "resize"
 
 # Volume control
-bindsym XF86AudioMute exec /usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec /usr/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
-bindsym XF86AudioLowerVolume exec /usr/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-
-# bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume 5
-# bindsym XF86AudioLowerVolume exec swayosd-client --output-volume -5
+# These are if you don't use SwayOSD
+# bindsym XF86AudioMute exec /usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+# bindsym XF86AudioRaiseVolume exec /usr/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+# bindsym XF86AudioLowerVolume exec /usr/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-
+
+# These are if you DO use SwayOSD
+# TODO: Tapping capslock (for escape) triggers SwayOSD to show "Caps Lock OFF". This shouldn't happen.
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume 5
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume -5
+# Source volume toggle mute
+bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
 
 # Brightness control
-bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
-bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
-# bindsym XF86MonBrightnessUp  exec swayosd-client --brightness +10
-# bindsym XF86MonBrightnessDown exec swayosd-client --brightness -10
+# bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+# bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp  exec swayosd-client --brightness +10
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness -10
 
 #
 # Status Bar:
@@ -289,7 +296,7 @@ exec flatpak run dev.deedles.Trayscale --hide-window
 # nextcloud desktop client for file syncing
 exec flatpak run com.nextcloud.desktopclient.nextcloud
 # SwayOSD (On Screen Display) visual indicator for volume and birghtness
-# exec swayosd-server
+exec systemctl --user start swayosd-server
 
 #
 # Systemd integration
