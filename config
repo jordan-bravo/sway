@@ -23,7 +23,7 @@ set $menu fuzzel --background-color=353535ff --text-color=999999ff --selection-c
 # wofi
 # set $menu wofi --show drun
 
-include /etc/sway/config-vars.d/*
+# include /etc/sway/config-vars.d/*
 
 ### Output configuration
 #
@@ -267,11 +267,27 @@ bar {
     }
 }
 
-include /etc/sway/config.d/*
+#############
+# The following was being pulled in from /etc/sway/config.d/50-systemd-user.conf
+# I have put in in this file for portability. It might be unnecessary, I will
+# experiment with removing it
+# include /etc/sway/config.d/*
+# import variables into system-user enviroment
+# based on the instructions in the sway wiki
+# see also https://github.com/swaywm/sway/issues/5732
+# and https://github.com/systemd/systemd/blob/dfc637d0ff756889e8e5b7cb4ec991eb06069aa1/xorg/50-systemd-user.sh
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+exec hash dbus-update-activation-environment 2>/dev/null && \
+        dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+##############
 
 # The following supposedly helps gnome-keyring start up with Sway
 # See section 6.8.1 of Arch Wiki on GNOME Keyring
 # https://wiki.archlinux.org/title/GNOME/Keyring#Tips_and_tricks
+# Also, it might be redundant if it's doing the same thing as a few lines above
 exec dbus-update-activation-environment --all
 
 #
