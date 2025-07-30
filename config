@@ -28,7 +28,7 @@ set $menu fuzzel --background-color=353535ff --text-color=999999ff --selection-c
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/nix-bitcoin-logo-01-wide.png fill
+output * bg ~/pictures/nix-bitcoin-logo-01-wide.png fill
 # thinky screen
 output eDP-1 resolution 2880x1800@90Hz scale 1.0
 # tux screen
@@ -108,7 +108,7 @@ input "type:pointer" {
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # Screenshot a region
-    bindsym Print exec grim -g "$(slurp)" $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d_%H.%M.%S.png')
+    bindsym Print exec grim -g "$(slurp)" $HOME/pictures/screenshots/$(date +'%Y-%m-%d_%H.%M.%S.png')
     # Screenshot the whole screen
     bindsym Shift+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')
 
